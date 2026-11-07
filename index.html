@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SaintTrading 下單提醒</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="lock" class="hidden">
+    <form id="lock-form">
+      <h1>SaintTrading 下單提醒</h1>
+      <p class="dim">請輸入密碼</p>
+      <input id="lock-password" type="password" autocomplete="current-password" inputmode="numeric">
+      <label class="dim small"><input id="lock-remember" type="checkbox" checked> 記住這台裝置</label>
+      <button type="submit">解鎖</button>
+      <div id="lock-error" class="warn"></div>
+    </form>
+  </div>
+
+  <header>
+    <div class="title">
+      <h1>SaintTrading 下單提醒</h1>
+      <span id="updated" class="dim"></span>
+    </div>
+    <div class="account">
+      <label>帳戶餘額
+        <input id="balance" type="number" min="1" step="1" inputmode="decimal"> U
+      </label>
+      <span id="rule" class="dim"></span>
+      <span id="margin" class="dim"></span>
+      <button id="logout" class="hidden" title="清掉這台裝置記住的密碼">登出</button>
+    </div>
+    <p class="notice">只是策略提醒，<b>不會下單</b>。開倉、停損請自己在交易所操作，一定要掛停損單。
+      數量依你輸入的帳戶餘額計算，只存在你的瀏覽器。</p>
+  </header>
+
+  <main>
+    <section id="alerts">
+      <div id="scope" class="dim"></div>
+      <div id="pending-section">
+        <h2>新訊號（下一根開盤執行）</h2>
+        <div id="pending" class="cards"></div>
+      </div>
+      <div class="tabs">
+        <button data-tab="holding" class="active">持倉中 <span id="holding-count"></span></button>
+        <button data-tab="history">歷史訂單 <span id="history-count"></span></button>
+      </div>
+      <div id="holding" class="cards tab-body"></div>
+      <div id="history" class="cards tab-body hidden"></div>
+    </section>
+
+    <section id="chart-section">
+      <div class="chart-head">
+        <select id="pair"></select>
+        <span id="strategy" class="dim"></span>
+        <button id="show-all" class="hidden">顯示全部交易</button>
+      </div>
+      <div id="chart"></div>
+      <div id="stats" class="dim"></div>
+      <div id="rules" class="dim small"></div>
+    </section>
+  </main>
+
+  <footer class="dim small">
+    圖表：<a href="https://www.tradingview.com/" target="_blank" rel="noopener">TradingView Lightweight Charts</a>。
+    回測結果不代表未來表現。
+  </footer>
+
+  <script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
